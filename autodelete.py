@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
-<<<<<<< HEAD
+
 """
 Created on Sat Oct 21 16:01:36 2017
-
-@author: 
 """
-=======
->>>>>>> 0cbbd452897efd8d838fb8ebaab3038dd9c77b7e
 
 import sqlite3
 import sys
@@ -175,8 +171,6 @@ def set_rules(path, keywords, table, valuename):#to test
     c = conn.cursor()
    #mettre une exeception pour "database is locked"
     schema = get_schema(c,table) #renvoie un array, gets the first element
-#schema = "CREATE TABLE \"urls\"(id INTEGER PRIMARY KEY AUTOINCREMENT,url LONGVARCHAR,title LONGVARCHAR,visit_count INTEGER DEFAULT 0 NOT NULL,typed_count INTEGER DEFAULT 0 NOT NULL,last_visit_time INTEGER NOT NULL,hidden INTEGER DEFAULT 0 NOT NULL, CONSTRAINT check_url CHECK (url NOT LIKE \'%reddit%\'and (url not like \'%mcgill%\'and (url not like \'%raddit%\'and (url not like \'%lol%\'and (url not like \'%maco%\'))))));"
-#schema = "CREATE TABLE \"urls\"(id INTEGER PRIMARY KEY AUTOINCREMENT,url LONGVARCHAR,title LONGVARCHAR,visit_count INTEGER DEFAULT 0 NOT NULL,typed_count INTEGER DEFAULT 0 NOT NULL,last_visit_time INTEGER NOT NULL,hidden INTEGER DEFAULT 0 NOT NULL)"
     #print("The current table looks like that:\n")
     #print(schema+"\n---------------------------------------")
     preschema = schema[:-1] #serves to take out the last parenthesis, so that if there is no constraint, everything else runs smoothly
@@ -222,11 +216,6 @@ def set_rules(path, keywords, table, valuename):#to test
 
     postschema = postschema + load
 
-    """c.execute(postschema)
-    c.execute("insert into test select * from " + table)
-    c.execute("drop table " + table)
-    c.execute("alter table test rename to " + table)"""
-
 #checking everything went fine
     c.execute("select sql from sqlite_master where type = \'table\' and name = \'" + table + "\';") #gets the create table
     newschema = c.fetchone()[0]
@@ -250,14 +239,5 @@ def autodelete(path, keywords):
     set_rules(path + 'Network Action Predictor', keywords, "network_action_predictor", "url")
     
 if __name__ == "__main__":
-<<<<<<< HEAD
     autodelete(path, keywords)
-=======
-    autodelete(path, keywords)
-    #save_parameters(path+'Cookies','cookies')
-    
-    #set_rules(path + "Cookies", keywords, "cookies", "host_key")
-    #clean_table(path + 'Network Action Predictor','network_action_predictor')
 
-    #print(wrapper_get_schema(path + 'Network Action Predictor','network_action_predictor'))
->>>>>>> 0cbbd452897efd8d838fb8ebaab3038dd9c77b7e
