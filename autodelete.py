@@ -2,7 +2,7 @@
 """
 Created on Sat Oct 21 16:01:36 2017
 
-@author: Nouey
+@author: 
 """
 
 import sqlite3
@@ -164,72 +164,6 @@ def wrapper_get_content_table(filename, tablename):
     return get_content_table(c,tablename)
     
 
-"""def set_rules_history(path, keywords): #tested
-
-    conn = sqlite3.connect(path)
-    
-    c = conn.cursor()
-
-    schema = get_schema(c, "urls")
-#mettre une exeception pour "database is locked"
- #renvoie un array, gets the first element
-#schema = "CREATE TABLE \"urls\"(id INTEGER PRIMARY KEY AUTOINCREMENT,url LONGVARCHAR,title LONGVARCHAR,visit_count INTEGER DEFAULT 0 NOT NULL,typed_count INTEGER DEFAULT 0 NOT NULL,last_visit_time INTEGER NOT NULL,hidden INTEGER DEFAULT 0 NOT NULL, CONSTRAINT check_url CHECK (url NOT LIKE \'%reddit%\'and (url not like \'%mcgill%\'and (url not like \'%raddit%\'and (url not like \'%lol%\'and (url not like \'%maco%\'))))));"
-#schema = "CREATE TABLE \"urls\"(id INTEGER PRIMARY KEY AUTOINCREMENT,url LONGVARCHAR,title LONGVARCHAR,visit_count INTEGER DEFAULT 0 NOT NULL,typed_count INTEGER DEFAULT 0 NOT NULL,last_visit_time INTEGER NOT NULL,hidden INTEGER DEFAULT 0 NOT NULL)"
-    print("The current table looks like that:\n")
-    print(schema+"\n---------------------------------------")
-    preschema = schema[:-1] #serves to take out the last parenthesis, so that if there is no constraint, everything else runs smoothly
-    preschema_split = preschema.split(',')
-
-#remplacement du nom "url", pour qu'on crée une table différent et qu'il n'y ait pas de conflit
-#on prend chaque partie de la liste de chaque coté d' "urls"
-    preschema_split_url = preschema_split[0].split("urls")
-    preschema_split[0] = preschema_split_url[0] + "test" + preschema_split_url[1] # on met test à la place d'url
-
-    save = ""
-    
-    for index, i in enumerate(preschema_split): #verifier s'il y a déjà une contrainte
-        if "constraint" in i.lower():
-            if "check_url" in i.lower():
-                save = preschema_split.pop(index)
-            
-    if save:
-        load = save[:-1].split(')')[0] + ' and (url not like'
-
-    else:
-        load = ' CONSTRAINT check_url CHECK (url not like'
-
-    for index,i in enumerate(keywords): #organiser les keywords et les conditions
-
-        c.execute("delete from urls where url like ?", ('%' + i + '%',)) #we delete the entries that don't match with the condition we're setting
-
-        if index == 0:
-            load = load + ' \'%' + i + '%\''
-        else:
-            load = load + 'and (url not like \'%' + i + '%\''
-
-    load = load + ")"*(load.count('(')+1) +';' # on ferme toutes les parenthèses + celle du tout début
-
-    print("This load will be added:"+load+"\n-------------------------")
-
-    postschema = ''
-    for i in preschema_split:
-        postschema = postschema + i + ','
-
-    postschema = postschema + load
-
-    c.execute(postschema)
-    c.execute("insert into test select * from urls")
-    c.execute("drop table urls")
-    c.execute("alter table test rename to urls")
-
-#checking everything went fine
-    c.execute("select sql from sqlite_master where type = \'table\' and name = \'urls\';") #gets the create table
-    newschema = c.fetchone()[0]
-    
-    print("The new tables looks like:\n",newschema,"\n--------------------------------------")
-    
-    conn.commit()
-    conn.close()"""
 
 def set_rules(path, keywords, table, valuename):#to test 
 
@@ -314,9 +248,3 @@ def autodelete(path, keywords):
     
 if __name__ == "__main__":
     autodelete(path, keywords)
-    #save_parameters(path+'Cookies','cookies')
-    
-    #set_rules(path + "Cookies", keywords, "cookies", "host_key")
-    #clean_table(path + 'Network Action Predictor','network_action_predictor')
-
-    #print(wrapper_get_schema(path + 'Network Action Predictor','network_action_predictor'))
