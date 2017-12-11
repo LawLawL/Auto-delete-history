@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 21 16:01:36 2017
-
-@author: Nouey
-"""
 
 import sqlite3
 import sys
