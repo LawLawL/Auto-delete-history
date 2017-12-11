@@ -17,7 +17,7 @@ If you also do not have python installed and you are on Windows then download th
 
 ## Use
 
-For now the scripts works only for Google Chrome and Vivaldo
+For now the scripts works only for Google Chrome and Vivaldi
 
 ### If you have downloaded the .py
 
