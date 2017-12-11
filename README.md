@@ -35,6 +35,6 @@ Open a terminal where the .exe is, then
 
 ## Todo
 
-* implement a reset function for the tables
+* implement a reset option for the tables
 
 * allow for personalized installation folder for a browser
