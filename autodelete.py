@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+<<<<<<< HEAD
 """
 Created on Sat Oct 21 16:01:36 2017
 
 @author: 
 """
+=======
+>>>>>>> 0cbbd452897efd8d838fb8ebaab3038dd9c77b7e
 
 import sqlite3
 import sys
@@ -247,4 +250,14 @@ def autodelete(path, keywords):
     set_rules(path + 'Network Action Predictor', keywords, "network_action_predictor", "url")
     
 if __name__ == "__main__":
+<<<<<<< HEAD
     autodelete(path, keywords)
+=======
+    autodelete(path, keywords)
+    #save_parameters(path+'Cookies','cookies')
+    
+    #set_rules(path + "Cookies", keywords, "cookies", "host_key")
+    #clean_table(path + 'Network Action Predictor','network_action_predictor')
+
+    #print(wrapper_get_schema(path + 'Network Action Predictor','network_action_predictor'))
+>>>>>>> 0cbbd452897efd8d838fb8ebaab3038dd9c77b7e
