@@ -19,7 +19,7 @@ If you also do not have python installed and you are on Windows then download th
 
 For now the scripts works only for Google Chrome and Vivaldo
 
-### If you have download the .py
+### If you have downloaded the .py
 
 Go where the file is, then execute 
 
@@ -27,13 +27,13 @@ Go where the file is, then execute
 
 For the `-b` switch the accepted values are "chrome" or "vivaldi", unsurprisingly. 
 
-### If you have download the zip with the .exe inside
+### If you have downloaded the zip with the .exe inside
 
 Open a terminal where the .exe is, then 
 
 `autodelete.exe -b the_name_of_your_browser_here -k a,comma,separated,list,of,keywords`
 
-##Todo
+## Todo
 
 * implement a reset function for the tables
 
