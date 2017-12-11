@@ -37,4 +37,4 @@ Open a terminal where the .exe is, then
 
 * implement a reset function for the tables
 
-* allows for personalized installation folder for a browser
+* allow for personalized installation folder for a browser
