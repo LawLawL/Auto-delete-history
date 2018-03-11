@@ -13,8 +13,13 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("-b", "--browser", help="Which browser you want to set the rules for")
 parser.add_argument("-k", "--keywords", help="Which keywords you want to forbid in your history")
+parser.add_argument("-P", "--path", help="Sets the installation path")
 
 args = parser.parse_args()
+
+if (args.keywords == None) or ((args.browser == None) and (args.path == None)):
+    print("One of the required arguments is missing")
+    sys.exit()
 
 keywords = args.keywords.split(',')
 
@@ -22,7 +27,9 @@ if args.browser.lower() == "chrome":
     path = os.getenv('APPDATA') + "\\..\\Local\\Google\\Chrome\\User Data\\Default\\"
 elif args.browser.lower() == "vivaldi":
     path = os.getenv('APPDATA') + "\\..\\Local\\Vivaldi\\User Data\\Default\\"
-    
+elif len(args.path) != 0:
+    path = args.path
+	
 def check_availability(cursor, tablename):
     
     try:
