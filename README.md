@@ -27,6 +27,14 @@ Go where the file is, then execute
 
 For the `-b` switch the accepted values are "chrome" or "vivaldi", unsurprisingly. 
 
+To set a personalized path:
+
+`python3 autodelete.py -p your_path_here -k a,comma,separated,list,of,keywords`
+
+To reset the tables as they were originally (although will wipe your history):
+
+`python3 autodelete.py -r`
+
 ### If you have downloaded the zip with the .exe inside
 
 Open a terminal where the .exe is, then 
@@ -35,6 +43,6 @@ Open a terminal where the .exe is, then
 
 ## Todo
 
-* implement a reset option for the tables
+* ~ implement a reset option for the tables ~
 
-* allow for personalized installation folder for a browser
+* ~ allow for personalized installation folder for a browser ~
