@@ -14,6 +14,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--browser", help="Which browser you want to set the rules for")
 parser.add_argument("-k", "--keywords", help="Which keywords you want to forbid in your history")
 parser.add_argument("-P", "--path", help="Sets the installation path")
+parser.add_argument("-r", "--reset", help="Reset tables", action = "store_true")
 
 args = parser.parse_args()
 
@@ -233,17 +234,25 @@ def set_rules(path, keywords, table, valuename):#to test
     conn.close()
 
 def autodelete(path, keywords):
-    save_parameters(path+'Cookies','cookies', True)
-    save_parameters(path+'History','urls', True)
-    save_parameters(path+'History','keyword_search_terms', True)
-    save_parameters(path+'History','segments', True)
-    save_parameters(path+'Network Action Predictor','network_action_predictor', True)
+
+    if not args.reset:
+        save_parameters(path+'Cookies','cookies', True)
+        save_parameters(path+'History','urls', True)
+        save_parameters(path+'History','keyword_search_terms', True)
+        save_parameters(path+'History','segments', True)
+        save_parameters(path+'Network Action Predictor','network_action_predictor', True)
     
-    set_rules(path + "Cookies", keywords, "cookies", "host_key")
-    set_rules(path + 'History', keywords, "urls", "url") 
-    set_rules(path + 'History', keywords, "keyword_search_terms", "lower_term")
-    set_rules(path + 'History', keywords, "segments", "name")
-    set_rules(path + 'Network Action Predictor', keywords, "network_action_predictor", "url")
+        set_rules(path + "Cookies", keywords, "cookies", "host_key")
+        set_rules(path + 'History', keywords, "urls", "url") 
+        set_rules(path + 'History', keywords, "keyword_search_terms", "lower_term")
+        set_rules(path + 'History', keywords, "segments", "name")
+        set_rules(path + 'Network Action Predictor', keywords, "network_action_predictor", "url")
+	else:
+	    clean_table(path+'Cookies', 'cookies')
+		clean_table(path+'History', 'urls')
+		clean_table(path+'History', 'keyword_search_terms')
+		clean_table(path+'History', 'segments')
+		clean_table(path+'Network Action Predictor','network_action_predictor')
     
 if __name__ == "__main__":
     autodelete(path, keywords)
